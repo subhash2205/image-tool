@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelForge - File Conversion Suite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --background: #0a192f;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--background);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Neon Header */
+        header {
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Holographic Hero */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ffee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Grid System */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        /* Glass Tool Cards */
+        .tool-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+            border-color: var(--primary);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Gradient Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), #00d1ff);
+            color: #0a192f;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Category Chips */
+        .category-chip {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animated Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.1), transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 209, 255, 0.1), transparent);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">PixelForge</div>
+            <div class="nav-links">
+                <a href="#tools" class="btn">Explore Tools</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Files with AI Power</h1>
+            <p>Next-generation conversion tools for images & documents</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="tools">
+            <div class="tool-grid">
+                <!-- Image Tools -->
+               <a href="/ai-image-enhancer" class="tool-card">
+    <span class="category-chip">Image Tools</span>
+    <i class="fas fa-magic tool-icon"></i>
+    <h3>AI Image Enhancer</h3>
+    <p>Upscale and enhance low-quality images using neural networks</p>
+</a>
+
+                <div class="tool-card">
+                    <span class="category-chip">Image Tools</span>
+                    <i class="fas fa-layer-group tool-icon"></i>
+                    <h3>Background Remover</h3>
+                    <p>Automatically remove backgrounds with precision masking</p>
+                </div>
+
+                <!-- PDF Tools -->
+                <div class="tool-card">
+                    <span class="category-chip">PDF Tools</span>
+                    <i class="fas fa-file-signature tool-icon"></i>
+                    <h3>Smart PDF Editor</h3>
+                    <p>Edit text and images directly in PDF documents</p>
+                </div>
+
+                <div class="tool-card">
+                    <span class="category-chip">PDF Tools</span>
+                    <i class="fas fa-robot tool-icon"></i>
+                    <h3>AI PDF Summary</h3>
+                    <p>Generate instant summaries of long PDF documents</p>
+                </div>
+
+                <!-- Conversion Tools -->
+                <div class="tool-card">
+                    <span class="category-chip">Conversion</span>
+                    <i class="fas fa-sync tool-icon"></i>
+                    <h3>Universal Converter</h3>
+                    <p>Convert between 50+ file formats instantly</p>
+                </div>
+
+                <div class="tool-card">
+                    <span class="category-chip">Security</span>
+                    <i class="fas fa-shield-alt tool-icon"></i>
+                    <h3>Encrypt Files</h3>
+                    <p>Military-grade encryption for sensitive documents</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Add hover effect to cards
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-5px) rotate(1deg)';
+            });
+            
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0) rotate(0)';
+            });
+        });
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
