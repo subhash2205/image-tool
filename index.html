@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelForge - File Conversion Suite</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- 🔴🔴🔴 UPDATE SEO CONTENT -->
+    <title>FileMaster - Online Image & PDF Tools</title>
+    <meta name="description" content="Free online tools for images and PDFs - Convert, compress, edit, and optimize files instantly">
+    <meta name="keywords" content="image tools, PDF tools, file conversion, document compression, online file editor">
+
+    <!-- 🔴🔴🔴 ADD YOUR FAVICON -->
+    <link rel="icon" type="image/png" href="/path-to-your-favicon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary: #00ff88;
-            --background: #0a192f;
-            --glass: rgba(255, 255, 255, 0.05);
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --dark: #1e293b;
+            --light: #f8fafc;
         }
 
         * {
@@ -19,79 +30,72 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--background);
-            color: white;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Neon Header */
-        header {
-            backdrop-filter: blur(10px);
-            background: var(--glass);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: fixed;
-            width: 100%;
+        /* 🔴🔴🔴 HEADER/NAV STYLES */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
             z-index: 100;
         }
 
-        nav {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
         }
 
-        /* Holographic Hero */
+        /* 🔴🔴🔴 HERO SECTION */
         .hero {
-            padding: 160px 0 100px;
             text-align: center;
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #00ff88, #00ffee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        /* Grid System */
-        .tool-grid {
+        /* 🔴🔴🔴 TOOLS GRID */
+        .tools-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 3rem 0;
+            margin-top: 2rem;
         }
 
-        /* Glass Tool Cards */
         .tool-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
+            background: white;
+            border-radius: 12px;
             padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
-            border-color: var(--primary);
         }
 
         .tool-icon {
@@ -100,147 +104,112 @@
             margin-bottom: 1rem;
         }
 
-        /* Gradient Buttons */
-        .btn {
-            background: linear-gradient(135deg, var(--primary), #00d1ff);
-            color: #0a192f;
-            padding: 1rem 2rem;
-            border: none;
+        /* 🔴🔴🔴 ADVERTISEMENT SECTIONS */
+        .ad-section {
+            margin: 3rem auto;
+            padding: 1rem;
+            text-align: center;
+            background: white;
             border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            max-width: 1200px;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
-        }
-
-        /* Category Chips */
-        .category-chip {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin: 1rem 0;
-        }
-
-        /* Responsive Design */
+        /* 🔴🔴🔴 RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-
-            .tool-grid {
+            
+            .tools-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Animated Background */
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.1), transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(0, 209, 255, 0.1), transparent);
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
-    
-    <header>
-        <nav class="container">
-            <div class="logo">PixelForge</div>
+    <!-- 🔴🔴🔴 ADD YOUR ADSENSE CODE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+    crossorigin="anonymous"></script>
+
+    <header class="header">
+        <nav class="nav-container">
+            <!-- 🔴🔴🔴 UPDATE LOGO -->
+            <div class="logo">FileMaster</div>
             <div class="nav-links">
-                <a href="#tools" class="btn">Explore Tools</a>
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Transform Files with AI Power</h1>
-            <p>Next-generation conversion tools for images & documents</p>
+        <h1>Transform Your Files in Seconds</h1>
+        <p>All-in-one solution for image and PDF processing</p>
+        
+        <!-- 🔴🔴🔴 ADD SEARCH BAR IF NEEDED -->
+        <div class="search-bar" style="margin-top: 2rem;">
+            <input type="text" placeholder="Search tools...">
         </div>
     </section>
 
-    <main class="container">
-        <section id="tools">
-            <div class="tool-grid">
-                <!-- Image Tools -->
-               <a href="image-tool/img-compress.html" class="tool-card">
-    <span class="category-chip">Image Tools</span>
-    <i class="fas fa-magic tool-icon"></i>
-    <h3>AI Image Enhancer</h3>
-    <p>Upscale and enhance low-quality images using neural networks</p>
-</a>
+    <!-- 🔴🔴🔴 AD SECTION 1 -->
+    <div class="ad-section">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+            data-ad-slot="YOUR_AD_SLOT_ID_1"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
 
-                <div class="tool-card">
-                    <span class="category-chip">Image Tools</span>
-                    <i class="fas fa-layer-group tool-icon"></i>
-                    <h3>Background Remover</h3>
-                    <p>Automatically remove backgrounds with precision masking</p>
-                </div>
+    <main class="tools-section" id="tools">
+        <h2>Popular Tools</h2>
+        <div class="tools-grid">
+            <!-- 🔴🔴🔴 UPDATE TOOL LINKS -->
+            <a href="/image-compressor" class="tool-card">
+                <i class="fas fa-file-image tool-icon"></i>
+                <h3>Image Compressor</h3>
+                <p>Reduce image size without quality loss</p>
+            </a>
 
-                <!-- PDF Tools -->
-                <div class="tool-card">
-                    <span class="category-chip">PDF Tools</span>
-                    <i class="fas fa-file-signature tool-icon"></i>
-                    <h3>Smart PDF Editor</h3>
-                    <p>Edit text and images directly in PDF documents</p>
-                </div>
+            <a href="/pdf-merger" class="tool-card">
+                <i class="fas fa-file-pdf tool-icon"></i>
+                <h3>PDF Merger</h3>
+                <p>Combine multiple PDF files into one</p>
+            </a>
 
-                <div class="tool-card">
-                    <span class="category-chip">PDF Tools</span>
-                    <i class="fas fa-robot tool-icon"></i>
-                    <h3>AI PDF Summary</h3>
-                    <p>Generate instant summaries of long PDF documents</p>
-                </div>
+            <a href="/image-converter" class="tool-card">
+                <i class="fas fa-exchange-alt tool-icon"></i>
+                <h3>Image Converter</h3>
+                <p>Convert between JPG, PNG, and WebP formats</p>
+            </a>
 
-                <!-- Conversion Tools -->
-                <div class="tool-card">
-                    <span class="category-chip">Conversion</span>
-                    <i class="fas fa-sync tool-icon"></i>
-                    <h3>Universal Converter</h3>
-                    <p>Convert between 50+ file formats instantly</p>
-                </div>
-
-                <div class="tool-card">
-                    <span class="category-chip">Security</span>
-                    <i class="fas fa-shield-alt tool-icon"></i>
-                    <h3>Encrypt Files</h3>
-                    <p>Military-grade encryption for sensitive documents</p>
-                </div>
-            </div>
-        </section>
+            <!-- Add more tool cards as needed -->
+        </div>
     </main>
 
+    <!-- 🔴🔴🔴 AD SECTION 2 -->
+    <div class="ad-section">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+            data-ad-slot="YOUR_AD_SLOT_ID_2"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
     <script>
-        // Add hover effect to cards
+        // 🔴🔴🔴 INITIALIZE ADSENSE
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // Add any interactive features here
         document.querySelectorAll('.tool-card').forEach(card => {
             card.addEventListener('mouseover', () => {
-                card.style.transform = 'translateY(-5px) rotate(1deg)';
+                card.style.transform = 'translateY(-5px)';
             });
-            
             card.addEventListener('mouseout', () => {
-                card.style.transform = 'translateY(0) rotate(0)';
-            });
-        });
-
-        // Add smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                card.style.transform = 'translateY(0)';
             });
         });
     </script>
