@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Subhash Chandra">
     
-    <!-- 🔴🔴🔴 SEO OPTIMIZATION -->
-    <meta name="description" content="Free online image compressor - reduce image file size while maintaining quality. Supports JPG, PNG, WebP formats. Perfect for web optimization.">
-    <meta name="keywords" content="image compressor, reduce image size, optimize images, web optimization, free image compression">
-    <title>Image Compressor Pro | Free Online Image Optimization</title>
+    <!-- SEO Meta Tags -->
+    <title>Image Compressor Pro - Optimize Images Online</title>
+    <meta name="description" content="Free online image compressor by Subhash Chandra. Reduce image file size while maintaining quality with adjustable compression levels. Supports JPG, PNG, WEBP formats.">
+    <meta name="keywords" content="image compressor, optimize images, reduce file size, Subhash Chandra, online image tools">
     
-    <!-- 🔴🔴🔴 AD SENSE INTEGRATION -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-    crossorigin="anonymous"></script>
+    <!-- AdMob Integration -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
 
     <style>
-        /* Base Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --background: #ecf0f1;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,10 +27,10 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             line-height: 1.6;
-            background: #f5f7fa;
-            color: #333;
+            background: var(--background);
+            color: var(--primary);
         }
 
         .container {
@@ -34,55 +39,27 @@
             padding: 20px;
         }
 
-        /* Header Styles */
-        .header {
+        .ad-banner {
             text-align: center;
-            padding: 2rem 0;
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        /* 🔴🔴🔴 ADVERTISEMENT AREAS */
-        .ad-unit {
-            background: #fff;
+            margin: 20px 0;
             padding: 15px;
-            margin: 2rem 0;
+            background: white;
             border-radius: 8px;
-            text-align: center;
         }
 
-        /* Compression Interface */
-        .tool-interface {
-            background: #fff;
-            padding: 2rem;
+        .tool-container {
+            background: white;
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin: 2rem 0;
-        }
-
-        .file-upload {
-            border: 2px dashed #ddd;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .quality-control {
-            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
         }
 
         .preview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .image-preview {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            gap: 25px;
+            margin-top: 25px;
         }
 
         /* Responsive Design */
@@ -91,34 +68,34 @@
                 padding: 10px;
             }
             
-            .preview-grid {
-                grid-template-columns: 1fr;
+            .tool-container {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 🔴🔴🔴 HEADER AD UNIT -->
-    <div class="ad-unit">
+    <!-- Top Ad Unit -->
+    <div class="ad-banner">
         <ins class="adsbygoogle"
             style="display:block"
-            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-            data-ad-slot="YOUR_AD_SLOT_ID_HEADER"
+            data-ad-client="ca-app-pub-6743240431494498/9428092011"
+            data-ad-slot="9428092011"
             data-ad-format="auto"
             data-full-width-responsive="true"></ins>
     </div>
 
     <div class="container">
-        <header class="header">
-            <h1>Image Compression Tool</h1>
-            <p>Optimize your images for web with adjustable quality</p>
+        <header>
+            <h1>Image Compressor Pro</h1>
+            <p>By Subhash Chandra</p>
         </header>
 
-        <main class="tool-interface">
-            <div class="file-upload">
+        <main class="tool-container">
+            <div class="upload-section">
                 <input type="file" id="imageInput" accept="image/*" hidden>
                 <label for="imageInput" class="upload-btn">Choose Image</label>
-                <p>Supported formats: JPG, PNG, WebP</p>
+                <p>Supported formats: JPG, PNG, WEBP</p>
             </div>
 
             <div class="quality-control">
@@ -146,16 +123,16 @@
                 </div>
             </div>
         </main>
+    </div>
 
-        <!-- 🔴🔴🔴 FOOTER AD UNIT -->
-        <div class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-                data-ad-slot="YOUR_AD_SLOT_ID_FOOTER"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-        </div>
+    <!-- Bottom Ad Unit -->
+    <div class="ad-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-app-pub-6743240431494498/4175765335"
+            data-ad-slot="4175765335"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
     </div>
 
     <script>
@@ -164,48 +141,46 @@
             const input = document.getElementById('imageInput');
             const quality = document.getElementById('quality').value / 100;
             
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    const img = new Image();
-                    img.src = e.target.result;
-                    
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        
-                        // Set canvas dimensions
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        
-                        // Draw image
-                        ctx.drawImage(img, 0, 0);
-                        
-                        // Show original details
-                        document.getElementById('originalPreview').src = img.src;
-                        document.getElementById('originalSize').textContent = 
-                            `Size: ${(input.files[0].size / 1024).toFixed(2)} KB`;
-
-                        // Compression
-                        canvas.toBlob((blob) => {
-                            const compressedUrl = URL.createObjectURL(blob);
-                            
-                            // Update compressed preview
-                            document.getElementById('compressedPreview').src = compressedUrl;
-                            document.getElementById('compressedSize').textContent = 
-                                `Size: ${(blob.size / 1024).toFixed(2)} KB`;
-                            
-                            // Enable download
-                            const downloadBtn = document.getElementById('downloadBtn');
-                            downloadBtn.href = compressedUrl;
-                            downloadBtn.download = `compressed-${Date.now()}.jpg`;
-                            downloadBtn.style.display = 'block';
-                        }, 'image/jpeg', quality);
-                    };
-                };
-                reader.readAsDataURL(input.files[0]);
+            if (!input.files[0]) {
+                alert('Please select an image first!');
+                return;
             }
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Original Image Details
+                    document.getElementById('originalPreview').src = img.src;
+                    document.getElementById('originalSize').textContent = 
+                        `Size: ${(input.files[0].size / 1024).toFixed(2)} KB`;
+
+                    // Compression
+                    canvas.toBlob((blob) => {
+                        const compressedUrl = URL.createObjectURL(blob);
+                        
+                        document.getElementById('compressedPreview').src = compressedUrl;
+                        document.getElementById('compressedSize').textContent = 
+                            `Size: ${(blob.size / 1024).toFixed(2)} KB`;
+                        
+                        const downloadBtn = document.getElementById('downloadBtn');
+                        downloadBtn.href = compressedUrl;
+                        downloadBtn.download = `compressed-${Date.now()}.jpg`;
+                        downloadBtn.style.display = 'block';
+                    }, 'image/jpeg', quality);
+                };
+            };
+            reader.readAsDataURL(input.files[0]);
         }
 
         // Update quality display
@@ -213,7 +188,7 @@
             document.getElementById('qualityValue').textContent = this.value;
         });
 
-        // 🔴🔴🔴 Initialize AdSense
+        // Initialize AdMob
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </body>
