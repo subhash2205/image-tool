@@ -3,51 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Subhash Chandra">
     
-    <!-- 🔴🔴🔴 UPDATE SEO CONTENT -->
-    <title>FileMaster - Online Image & PDF Tools</title>
-    <meta name="description" content="Free online tools for images and PDFs - Convert, compress, edit, and optimize files instantly">
-    <meta name="keywords" content="image tools, PDF tools, file conversion, document compression, online file editor">
+    <!-- SEO Meta Tags -->
+    <title>FileMaster Pro - Online Image & PDF Tools</title>
+    <meta name="description" content="Free online tools for images and PDFs by Subhash Chandra. Convert, compress, edit, and optimize files instantly">
+    <meta name="keywords" content="image tools, PDF tools, file conversion, Subhash Chandra, online file editor">
 
-    <!-- 🔴🔴🔴 ADD YOUR FAVICON -->
-    <link rel="icon" type="image/png" href="/path-to-your-favicon.png">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AdMob Integration -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
 
     <style>
         :root {
-            --primary: #6366f1;
-            --secondary: #4f46e5;
-            --dark: #1e293b;
-            --light: #f8fafc;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --background: #f8f9fa;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--light);
-            color: var(--dark);
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--primary);
         }
 
-        /* 🔴🔴🔴 HEADER/NAV STYLES */
-        .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,31 +58,20 @@
             color: var(--primary);
         }
 
-        /* 🔴🔴🔴 HERO SECTION */
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 6rem 1rem;
+            padding: 4rem 0;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* 🔴🔴🔴 TOOLS GRID */
-        .tools-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 1rem;
-        }
-
+        /* Tools Grid */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 3rem 0;
         }
 
         .tool-card {
@@ -91,33 +79,35 @@
             border-radius: 12px;
             padding: 2rem;
             transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
         .tool-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 1rem;
         }
 
-        /* 🔴🔴🔴 ADVERTISEMENT SECTIONS */
-        .ad-section {
-            margin: 3rem auto;
+        /* Ad Sections */
+        .ad-unit {
+            margin: 2rem 0;
             padding: 1rem;
             text-align: center;
             background: white;
             border-radius: 8px;
-            max-width: 1200px;
         }
 
-        /* 🔴🔴🔴 RESPONSIVE DESIGN */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .tools-grid {
@@ -127,83 +117,79 @@
     </style>
 </head>
 <body>
-    <!-- 🔴🔴🔴 ADD YOUR ADSENSE CODE -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-    crossorigin="anonymous"></script>
-
-    <header class="header">
-        <nav class="nav-container">
-            <!-- 🔴🔴🔴 UPDATE LOGO -->
-            <div class="logo">FileMaster</div>
-            <div class="nav-links">
-                <a href="#tools" class="nav-link">Tools</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Transform Your Files in Seconds</h1>
-        <p>All-in-one solution for image and PDF processing</p>
-        
-        <!-- 🔴🔴🔴 ADD SEARCH BAR IF NEEDED -->
-        <div class="search-bar" style="margin-top: 2rem;">
-            <input type="text" placeholder="Search tools...">
-        </div>
-    </section>
-
-    <!-- 🔴🔴🔴 AD SECTION 1 -->
-    <div class="ad-section">
+    <!-- Top Ad Unit -->
+    <div class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
-            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-            data-ad-slot="YOUR_AD_SLOT_ID_1"
+            data-ad-client="ca-app-pub-6743240431494498/9428092011"
+            data-ad-slot="9428092011"
             data-ad-format="auto"
             data-full-width-responsive="true"></ins>
     </div>
 
-    <main class="tools-section" id="tools">
-        <h2>Popular Tools</h2>
-        <div class="tools-grid">
-            <!-- 🔴🔴🔴 UPDATE TOOL LINKS -->
-            <a href="/image-compressor" class="tool-card">
-                <i class="fas fa-file-image tool-icon"></i>
-                <h3>Image Compressor</h3>
-                <p>Reduce image size without quality loss</p>
-            </a>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">FileMaster</div>
+                <div class="nav-links">
+                    <a href="#tools" class="nav-link">Tools</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+            </nav>
+        </header>
 
-            <a href="/pdf-merger" class="tool-card">
-                <i class="fas fa-file-pdf tool-icon"></i>
-                <h3>PDF Merger</h3>
-                <p>Combine multiple PDF files into one</p>
-            </a>
+        <section class="hero">
+            <h1>Transform Your Files in Seconds</h1>
+            <p>All-in-one solution for image and PDF processing</p>
+        </section>
 
-            <a href="/image-converter" class="tool-card">
-                <i class="fas fa-exchange-alt tool-icon"></i>
-                <h3>Image Converter</h3>
-                <p>Convert between JPG, PNG, and WebP formats</p>
-            </a>
+        <main id="tools">
+            <h2>Featured Tools</h2>
+            <div class="tools-grid">
+                <!-- Image Tools -->
+                <a href="image-tool/img-compress.html" class="tool-card">
+                    <i class="fas fa-file-image tool-icon"></i>
+                    <h3>Image Compressor</h3>
+                    <p>Reduce image size without quality loss</p>
+                </a>
 
-            <!-- Add more tool cards as needed -->
-        </div>
-    </main>
+                <a href="image-tool/img-convert.html" class="tool-card">
+                    <i class="fas fa-exchange-alt tool-icon"></i>
+                    <h3>Image Converter</h3>
+                    <p>Convert between JPG, PNG, and WebP</p>
+                </a>
 
-    <!-- 🔴🔴🔴 AD SECTION 2 -->
-    <div class="ad-section">
+                <!-- PDF Tools -->
+                <a href="pdf-tool/pdf-merge.html" class="tool-card">
+                    <i class="fas fa-file-pdf tool-icon"></i>
+                    <h3>PDF Merger</h3>
+                    <p>Combine multiple PDF files</p>
+                </a>
+
+                <a href="pdf-tool/pdf-split.html" class="tool-card">
+                    <i class="fas fa-cut tool-icon"></i>
+                    <h3>PDF Splitter</h3>
+                    <p>Split PDF into multiple documents</p>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Ad Unit -->
+    <div class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
-            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-            data-ad-slot="YOUR_AD_SLOT_ID_2"
+            data-ad-client="ca-app-pub-6743240431494498/4175765335"
+            data-ad-slot="4175765335"
             data-ad-format="auto"
             data-full-width-responsive="true"></ins>
     </div>
 
     <script>
-        // 🔴🔴🔴 INITIALIZE ADSENSE
+        // Initialize AdMob
         (adsbygoogle = window.adsbygoogle || []).push({});
-
-        // Add any interactive features here
+        
+        // Add hover effect
         document.querySelectorAll('.tool-card').forEach(card => {
             card.addEventListener('mouseover', () => {
                 card.style.transform = 'translateY(-5px)';
