@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Subhash Chandra">
+    
+    <!-- SEO Meta Tags -->
+    <title>Image Converter Pro - Convert & Optimize Images Online</title>
+    <meta name="description" content="Free online image conversion tool by Subhash Chandra. Convert between JPG, PNG, and WebP formats with adjustable compression. Maintain quality while reducing file size.">
+    <meta name="keywords" content="image converter, convert images, JPG to PNG, WebP converter, Subhash Chandra">
+
+    <!-- AdMob Integration -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --background: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .ad-banner {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tool-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .upload-section {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            border-color: var(--primary);
+            background: rgba(44, 62, 80, 0.05);
+        }
+
+        .conversion-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Ad Unit -->
+    <div class="ad-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-app-pub-6743240431494498/9428092011"
+            data-ad-slot="9428092011"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Image Converter Pro</h1>
+            <p>By Subhash Chandra</p>
+        </header>
+
+        <main class="tool-container">
+            <div class="upload-section" onclick="document.getElementById('imageInput').click()">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <p>Click to Upload Image</p>
+                <p>Supported formats: JPG, PNG, WEBP</p>
+            </div>
+
+            <div class="conversion-options">
+                <div>
+                    <label>Output Format:</label>
+                    <select id="outputFormat">
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Quality: <span id="qualityValue">80</span>%</label>
+                    <input type="range" id="quality" min="1" max="100" value="80">
+                </div>
+            </div>
+
+            <div class="preview-grid">
+                <div>
+                    <h3>Original Image</h3>
+                    <img id="originalPreview" class="image-preview">
+                    <div id="originalSize"></div>
+                </div>
+                
+                <div>
+                    <h3>Converted Image</h3>
+                    <img id="convertedPreview" class="image-preview">
+                    <div id="convertedSize"></div>
+                    <button onclick="convertImage()" class="convert-btn">Convert Now</button>
+                    <a id="downloadBtn" class="download-btn" style="display: none;">Download</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Ad Unit -->
+    <div class="ad-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-app-pub-6743240431494498/4175765335"
+            data-ad-slot="4175765335"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+        <p>© 2023 Image Converter Pro | Developed by Subhash Chandra</p>
+        <p><a href="img-convert.html" style="color: white;">Home</a> | <a href="/privacy" style="color: white;">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function convertImage() {
+            const input = document.getElementById('imageInput');
+            const outputFormat = document.getElementById('outputFormat').value;
+            const quality = document.getElementById('quality').value / 100;
+            
+            if (!input.files[0]) {
+                alert('Please select an image first!');
+                return;
+            }
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Show original details
+                    document.getElementById('originalPreview').src = img.src;
+                    document.getElementById('originalSize').textContent = 
+                        `Size: ${(input.files[0].size / 1024).toFixed(2)} KB`;
+
+                    // Conversion logic
+                    canvas.toBlob((blob) => {
+                        const convertedUrl = URL.createObjectURL(blob);
+                        
+                        document.getElementById('convertedPreview').src = convertedUrl;
+                        document.getElementById('convertedSize').textContent = 
+                            `Size: ${(blob.size / 1024).toFixed(2)} KB`;
+                        
+                        const downloadBtn = document.getElementById('downloadBtn');
+                        downloadBtn.href = convertedUrl;
+                        downloadBtn.download = `converted-image.${outputFormat}`;
+                        downloadBtn.style.display = 'block';
+                    }, `image/${outputFormat}`, quality);
+                };
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        // Update quality display
+        document.getElementById('quality').addEventListener('input', function() {
+            document.getElementById('qualityValue').textContent = this.value;
+        });
+
+        // Initialize AdMob
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
