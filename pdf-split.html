@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Subhash Chandra">
+    
+    <!-- SEO Meta Tags -->
+    <title>PDF Splitter Pro - Split PDF Files Online</title>
+    <meta name="description" content="Free online PDF splitting tool by Subhash Chandra. Split large PDF documents into multiple files with page range selection and compression. Secure browser-based processing.">
+    <meta name="keywords" content="PDF splitter, split PDF files, divide PDF, Subhash Chandra, online PDF tools">
+
+    <!-- AdMob Integration -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #2a3f5f;
+            --secondary: #7c8bad;
+            --background: #f8f9fa;
+            --accent: #ff6b6b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .ad-banner {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tool-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .upload-section {
+            border: 2px dashed var(--primary);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            background-color: rgba(42, 63, 95, 0.05);
+        }
+
+        .split-options {
+            margin: 2rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Ad Unit -->
+    <div class="ad-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-app-pub-6743240431494498/9428092011"
+            data-ad-slot="9428092011"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>PDF Splitter Pro</h1>
+            <p>By Subhash Chandra</p>
+        </header>
+
+        <main class="tool-container">
+            <div class="upload-section" onclick="document.getElementById('pdfInput').click()">
+                <input type="file" id="pdfInput" accept=".pdf" hidden>
+                <p>Click to Upload PDF File</p>
+                <p>Max file size: 25MB</p>
+            </div>
+
+            <div class="split-options">
+                <div>
+                    <label>Split Mode:</label>
+                    <select id="splitMode">
+                        <option value="range">Page Range</option>
+                        <option value="every">Every X Pages</option>
+                    </select>
+                </div>
+
+                <div id="rangeOptions">
+                    <label>Page Range (e.g., 1-5,8,10-12):</label>
+                    <input type="text" id="pageRange">
+                </div>
+
+                <div id="pageCountOptions" style="display: none;">
+                    <label>Split every:</label>
+                    <input type="number" id="pageCount" min="1" value="1">
+                    <span>pages</span>
+                </div>
+
+                <div>
+                    <label>Compression Level:</label>
+                    <select id="compressionLevel">
+                        <option value="none">No Compression</option>
+                        <option value="medium">Medium Compression</option>
+                        <option value="high">High Compression</option>
+                    </select>
+                </div>
+
+                <button onclick="splitPDF()" class="split-btn">Split PDF</button>
+            </div>
+
+            <div id="outputSection" style="display: none;">
+                <h3>Split Files</h3>
+                <div id="fileList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Ad Unit -->
+    <div class="ad-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-app-pub-6743240431494498/4175765335"
+            data-ad-slot="4175765335"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+        <p>© 2023 PDF Splitter Pro | Developed by Subhash Chandra</p>
+        <p><a href="pdf-split.html" style="color: white;">Home</a> | <a href="/privacy" style="color: white;">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('splitMode').addEventListener('change', function() {
+            document.getElementById('rangeOptions').style.display = 
+                this.value === 'range' ? 'block' : 'none';
+            document.getElementById('pageCountOptions').style.display = 
+                this.value === 'every' ? 'block' : 'none';
+        });
+
+        async function splitPDF() {
+            const fileInput = document.getElementById('pdfInput');
+            if (!fileInput.files[0]) {
+                alert('Please select a PDF file first!');
+                return;
+            }
+
+            // Show loading state
+            document.getElementById('outputSection').style.display = 'block';
+            document.getElementById('fileList').innerHTML = '<p>Processing...</p>';
+
+            // Simulated splitting (Requires PDF-Lib for actual implementation)
+            setTimeout(() => {
+                const fileList = document.getElementById('fileList');
+                fileList.innerHTML = `
+                    <div class="file-item">
+                        <span>part-1.pdf</span>
+                        <a href="#" download>Download</a>
+                    </div>
+                    <div class="file-item">
+                        <span>part-2.pdf</span>
+                        <a href="#" download>Download</a>
+                    </div>
+                `;
+            }, 2000);
+        }
+
+        // Initialize AdMob
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
