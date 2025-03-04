@@ -7,9 +7,9 @@
     
     <!-- SEO Meta Tags -->
     <title>Image Compressor Pro - Optimize Images Online</title>
-    <meta name="description" content="Free online image compressor by Subhash Chandra. Reduce image file size while maintaining quality with adjustable compression levels. Supports JPG, PNG, WEBP formats.">
+    <meta name="description" content="Free online image compression tool by Subhash Chandra. Reduce image file size while maintaining quality with adjustable compression levels. Supports JPG, PNG, WEBP formats.">
     <meta name="keywords" content="image compressor, optimize images, reduce file size, Subhash Chandra, online image tools">
-    
+
     <!-- AdMob Integration -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
 
@@ -31,12 +31,16 @@
             line-height: 1.6;
             background: var(--background);
             color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
 
         .ad-banner {
@@ -62,14 +66,26 @@
             margin-top: 25px;
         }
 
-        /* Responsive Design */
+        .upload-section {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
-            }
-            
-            .tool-container {
-                padding: 20px;
             }
         }
     </style>
@@ -92,9 +108,9 @@
         </header>
 
         <main class="tool-container">
-            <div class="upload-section">
+            <div class="upload-section" onclick="document.getElementById('imageInput').click()">
                 <input type="file" id="imageInput" accept="image/*" hidden>
-                <label for="imageInput" class="upload-btn">Choose Image</label>
+                <p>Click to Upload Image</p>
                 <p>Supported formats: JPG, PNG, WEBP</p>
             </div>
 
@@ -135,8 +151,12 @@
             data-full-width-responsive="true"></ins>
     </div>
 
+    <footer>
+        <p>© 2023 Image Compressor Pro | Developed by Subhash Chandra</p>
+        <p>Contact: contact@example.com</p>
+    </footer>
+
     <script>
-        // Image Compression Logic
         function compressImage() {
             const input = document.getElementById('imageInput');
             const quality = document.getElementById('quality').value / 100;
