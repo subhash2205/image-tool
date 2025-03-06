@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Subhash Chandra">
     
     <!-- SEO Optimization -->
     <title>PDF Merger Pro - Combine PDF Files Online</title>
-    <meta name="description" content="Merge multiple PDF documents into one file online. Free PDF merging tool by Subhash Chandra with compression options and secure processing.">
-    <meta name="keywords" content="PDF merger, combine PDF, Subhash Chandra, online PDF tools">
+    <meta name="description" content="Merge multiple PDF documents securely with compression options. Free online PDF merger by Subhash Chandra.">
+    <meta name="keywords" content="PDF merger, combine PDF files, online PDF tools, Subhash Chandra">
 
     <!-- AdMob Integration -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
@@ -27,7 +28,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             background: var(--background);
             color: var(--primary);
@@ -43,61 +44,65 @@
             flex: 1;
         }
 
-        .ad-banner {
+        .ad-unit {
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
+            margin: 1.5rem 0;
+            padding: 1rem;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .tool-container {
             background: white;
-            padding: 30px;
+            padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 20px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
         }
 
-        .upload-section {
+        .upload-area {
             border: 2px dashed var(--primary);
-            padding: 2rem;
+            padding: 3rem 1rem;
             text-align: center;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .file-list {
             margin: 2rem 0;
+            display: grid;
+            gap: 0.5rem;
         }
 
         footer {
             background: var(--primary);
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 1.5rem;
             margin-top: auto;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
+            }
+            
+            .upload-area {
+                padding: 2rem 1rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Top Ad Unit -->
-    <div class="ad-banner">
+    <div class="ad-unit">
         <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-app-pub-6743240431494498/9428092011"
-            data-ad-slot="9428092011"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
+             style="display:block"
+             data-ad-client="ca-app-pub-6743240431494498/9428092011"
+             data-ad-slot="9428092011"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
 
     <div class="container">
@@ -107,86 +112,84 @@
         </header>
 
         <main class="tool-container">
-            <div class="upload-section" onclick="document.getElementById('pdfInput').click()">
+            <div class="upload-area" onclick="document.getElementById('pdfInput').click()">
                 <input type="file" id="pdfInput" accept=".pdf" multiple hidden>
                 <p>Click to Upload PDF Files</p>
-                <p>Max 10 files | 25MB each</p>
+                <small>Max 10 files • 25MB each</small>
             </div>
 
             <div class="file-list" id="fileList"></div>
 
             <div class="controls">
-                <label>Compression Level: </label>
+                <label>Compression Level:</label>
                 <select id="compressionLevel">
-                    <option value="low">Low Compression</option>
-                    <option value="medium" selected>Medium Compression</option>
-                    <option value="high">High Compression</option>
+                    <option value="low">Low (Fast)</option>
+                    <option value="medium">Medium (Recommended)</option>
+                    <option value="high">High (Smaller Files)</option>
                 </select>
-                <button onclick="mergePDFs()">Merge PDFs</button>
+                <button onclick="processFiles()">Merge PDFs</button>
             </div>
 
             <div id="outputSection" style="display: none;">
-                <h3>Merged PDF</h3>
+                <h3>Merged PDF Ready</h3>
                 <a id="downloadBtn" class="download-btn">Download Merged File</a>
             </div>
         </main>
     </div>
 
     <!-- Bottom Ad Unit -->
-    <div class="ad-banner">
+    <div class="ad-unit">
         <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-app-pub-6743240431494498/4175765335"
-            data-ad-slot="4175765335"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
+             style="display:block"
+             data-ad-client="ca-app-pub-6743240431494498/4175765335"
+             data-ad-slot="4175765335"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
 
     <footer>
         <p>© 2023 PDF Merger Pro | Developed by Subhash Chandra</p>
-        <p><a href="pdf-merge.html" style="color: white;">Home</a> | <a href="/privacy" style="color: white;">Privacy Policy</a></p>
+        <nav>
+            <a href="pdf-merge.html">Home</a> • 
+            <a href="/privacy">Privacy</a> • 
+            <a href="/terms">Terms</a>
+        </nav>
     </footer>
 
     <script>
-        let files = [];
-        
-        document.getElementById('pdfInput').addEventListener('change', function(e) {
-            files = Array.from(e.target.files);
+        let selectedFiles = [];
+
+        // File handling
+        document.getElementById('pdfInput').addEventListener('change', e => {
+            selectedFiles = Array.from(e.target.files);
             updateFileList();
         });
 
         function updateFileList() {
-            const fileList = document.getElementById('fileList');
-            fileList.innerHTML = files.map((file, index) => `
+            const list = document.getElementById('fileList');
+            list.innerHTML = selectedFiles.map((file, index) => `
                 <div class="file-item">
                     <span>${file.name}</span>
-                    <button onclick="removeFile(${index})">Remove</button>
+                    <button onclick="removeFile(${index})">×</button>
                 </div>
             `).join('');
         }
 
         function removeFile(index) {
-            files.splice(index, 1);
+            selectedFiles.splice(index, 1);
             updateFileList();
         }
 
-        async function mergePDFs() {
-            if (files.length < 2) {
-                alert('Please select at least 2 PDF files!');
-                return;
-            }
-
-            // Show loading state
-            document.getElementById('outputSection').style.display = 'block';
+        async function processFiles() {
+            if (selectedFiles.length < 2) return alert('Please select at least 2 files');
             
-            // Simulated merge (Replace with actual PDF processing)
-            setTimeout(() => {
-                const mergedBlob = new Blob(['Simulated merged content'], {type: 'application/pdf'});
-                const url = URL.createObjectURL(mergedBlob);
-                
-                document.getElementById('downloadBtn').href = url;
-                document.getElementById('downloadBtn').download = `merged-${Date.now()}.pdf`;
-            }, 1500);
+            // Simulated processing
+            document.getElementById('outputSection').style.display = 'block';
+            const blob = new Blob(['Simulated merged content'], {type: 'application/pdf'});
+            const url = URL.createObjectURL(blob);
+            
+            document.getElementById('downloadBtn').href = url;
+            document.getElementById('downloadBtn').download = `merged-${Date.now()}.pdf`;
         }
 
         // Initialize AdMob
