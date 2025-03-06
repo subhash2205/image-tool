@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Subhash Chandra">
     
-    <!-- SEO Meta Tags -->
+    <!-- SEO Optimization -->
     <title>PDF Merger Pro - Combine PDF Files Online</title>
-    <meta name="description" content="Free online PDF merger tool by Subhash Chandra. Combine multiple PDF documents into one file with optimized compression. Secure and browser-based processing.">
-    <meta name="keywords" content="PDF merger, combine PDF files, merge documents, Subhash Chandra, online PDF tools">
+    <meta name="description" content="Merge multiple PDF documents into one file online. Free PDF merging tool by Subhash Chandra with compression options and secure processing.">
+    <meta name="keywords" content="PDF merger, combine PDF, Subhash Chandra, online PDF tools">
 
     <!-- AdMob Integration -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
 
     <style>
         :root {
-            --primary: #3a405a;
-            --secondary: #f9dec9;
-            --accent: #99b2dd;
+            --primary: #2d4059;
+            --secondary: #f07b3f;
             --background: #f8f9fa;
         }
 
@@ -71,21 +70,8 @@
             transition: all 0.3s ease;
         }
 
-        .upload-section:hover {
-            background-color: var(--secondary);
-        }
-
         .file-list {
             margin: 2rem 0;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: var(--background);
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
         }
 
         footer {
@@ -99,10 +85,6 @@
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
-            }
-            
-            .tool-container {
-                padding: 20px;
             }
         }
     </style>
@@ -136,17 +118,16 @@
             <div class="controls">
                 <label>Compression Level: </label>
                 <select id="compressionLevel">
-                    <option value="none">No Compression</option>
+                    <option value="low">Low Compression</option>
                     <option value="medium" selected>Medium Compression</option>
                     <option value="high">High Compression</option>
                 </select>
-                <button onclick="mergePDFs()" class="merge-btn">Merge PDFs</button>
+                <button onclick="mergePDFs()">Merge PDFs</button>
             </div>
 
             <div id="outputSection" style="display: none;">
                 <h3>Merged PDF</h3>
-                <p>File Size: <span id="mergedSize">-</span></p>
-                <a id="downloadBtn" class="download-btn">Download Merged PDF</a>
+                <a id="downloadBtn" class="download-btn">Download Merged File</a>
             </div>
         </main>
     </div>
@@ -169,7 +150,6 @@
     <script>
         let files = [];
         
-        // Handle file selection
         document.getElementById('pdfInput').addEventListener('change', function(e) {
             files = Array.from(e.target.files);
             updateFileList();
@@ -177,17 +157,12 @@
 
         function updateFileList() {
             const fileList = document.getElementById('fileList');
-            fileList.innerHTML = '';
-            
-            files.forEach((file, index) => {
-                const div = document.createElement('div');
-                div.className = 'file-item';
-                div.innerHTML = `
-                    <span>${index + 1}. ${file.name}</span>
+            fileList.innerHTML = files.map((file, index) => `
+                <div class="file-item">
+                    <span>${file.name}</span>
                     <button onclick="removeFile(${index})">Remove</button>
-                `;
-                fileList.appendChild(div);
-            });
+                </div>
+            `).join('');
         }
 
         function removeFile(index) {
@@ -202,28 +177,16 @@
             }
 
             // Show loading state
-            document.getElementById('outputSection').style.display = 'none';
+            document.getElementById('outputSection').style.display = 'block';
             
-            // Simulate merging (Actual implementation requires PDF-Lib or server-side processing)
+            // Simulated merge (Replace with actual PDF processing)
             setTimeout(() => {
-                const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-                const compressionLevel = document.getElementById('compressionLevel').value;
+                const mergedBlob = new Blob(['Simulated merged content'], {type: 'application/pdf'});
+                const url = URL.createObjectURL(mergedBlob);
                 
-                // Simulate compression
-                let compressedSize = totalSize;
-                if (compressionLevel === 'medium') compressedSize = totalSize * 0.7;
-                if (compressionLevel === 'high') compressedSize = totalSize * 0.5;
-
-                document.getElementById('mergedSize').textContent = 
-                    `${(compressedSize / 1024 / 1024).toFixed(2)} MB`;
-                document.getElementById('outputSection').style.display = 'block';
-                
-                // Create dummy download
-                const blob = new Blob([], { type: 'application/pdf' });
-                const url = URL.createObjectURL(blob);
                 document.getElementById('downloadBtn').href = url;
-                document.getElementById('downloadBtn').download = `merged-document-${Date.now()}.pdf`;
-            }, 2000);
+                document.getElementById('downloadBtn').download = `merged-${Date.now()}.pdf`;
+            }, 1500);
         }
 
         // Initialize AdMob
