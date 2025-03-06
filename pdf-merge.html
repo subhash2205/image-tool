@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Subhash Chandra">
     
-    <!-- SEO Meta Tags -->
-    <title>PDF Merger Pro | Combine PDF Files Online</title>
-    <meta name="description" content="Merge multiple PDF documents into one file with Subhash Chandra's free online PDF merger. Secure processing with adjustable compression levels.">
-    <meta name="keywords" content="PDF merger, combine PDF, Subhash Chandra, online PDF tools">
+    <!-- SEO Optimization -->
+    <title>PDF Merger Pro - Combine PDF Files Online</title>
+    <meta name="description" content="Merge multiple PDF documents securely with Subhash Chandra's free online PDF merger. Professional-grade compression and optimization.">
+    <meta name="keywords" content="PDF merger, combine PDF files, online PDF tools, Subhash Chandra">
+    <meta name="robots" content="index, follow">
 
     <!-- AdMob Integration -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-6743240431494498~5515669687" crossorigin="anonymous"></script>
@@ -46,7 +47,7 @@
         .ad-unit {
             background: white;
             padding: 15px;
-            margin: 20px 0;
+            margin: 1rem 0;
             border-radius: 8px;
             text-align: center;
         }
@@ -121,11 +122,11 @@
             <div class="controls">
                 <label>Compression Level:</label>
                 <select id="compressionLevel">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low">Low (Fast)</option>
+                    <option value="medium">Medium (Recommended)</option>
+                    <option value="high">High (Smaller Files)</option>
                 </select>
-                <button onclick="processMerge()">Merge PDFs</button>
+                <button onclick="startProcessing()">Merge PDFs</button>
             </div>
 
             <div id="outputSection" style="display: none;">
@@ -149,22 +150,26 @@
         <p>© 2023 PDF Merger Pro | Developed by Subhash Chandra</p>
         <nav>
             <a href="pdf-merge.html">Home</a> • 
-            <a href="/privacy">Privacy Policy</a>
+            <a href="/privacy">Privacy Policy</a> • 
+            <a href="/terms">Terms of Service</a>
         </nav>
     </footer>
 
+    <!-- PDF Processing Library -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    
     <script>
-        let pdfFiles = [];
+        let selectedFiles = [];
 
         // File handling
-        document.getElementById('pdfInput').addEventListener('change', e => {
-            pdfFiles = Array.from(e.target.files);
+        document.getElementById('pdfInput').addEventListener('change', async (e) => {
+            selectedFiles = Array.from(e.target.files);
             updateFileList();
         });
 
         function updateFileList() {
             const list = document.getElementById('fileList');
-            list.innerHTML = pdfFiles.map((file, index) => `
+            list.innerHTML = selectedFiles.map((file, index) => `
                 <div class="file-item">
                     <span>${file.name}</span>
                     <button onclick="removeFile(${index})">×</button>
@@ -173,30 +178,55 @@
         }
 
         function removeFile(index) {
-            pdfFiles.splice(index, 1);
+            selectedFiles.splice(index, 1);
             updateFileList();
         }
 
-        async function processMerge() {
-            if (pdfFiles.length < 2) return alert('Please select at least 2 PDF files');
-            
-            // Show processing state
-            document.getElementById('outputSection').style.display = 'block';
-            
-            // Simulated merge (Replace with actual PDF processing)
-            try {
-                const mergedBlob = await new Promise(resolve => {
-                    setTimeout(() => {
-                        resolve(new Blob(['Simulated merged content'], {type: 'application/pdf'}));
-                    }, 1500);
-                });
+        async function startProcessing() {
+            if (selectedFiles.length < 2) {
+                alert('Please select at least 2 PDF files');
+                return;
+            }
 
-                const url = URL.createObjectURL(mergedBlob);
-                document.getElementById('downloadBtn').href = url;
-                document.getElementById('downloadBtn').download = `merged-${Date.now()}.pdf`;
+            try {
+                showLoader();
+                const mergedPdf = await PDFLib.PDFDocument.create();
+                
+                for (const file of selectedFiles) {
+                    const pdfBytes = await file.arrayBuffer();
+                    const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+                    const pages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                    pages.forEach(page => mergedPdf.addPage(page));
+                }
+
+                const mergedBytes = await mergedPdf.save();
+                createDownloadLink(mergedBytes);
             } catch (error) {
                 alert('Error merging files: ' + error.message);
+            } finally {
+                hideLoader();
             }
+        }
+
+        function createDownloadLink(mergedBytes) {
+            const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            
+            document.getElementById('outputSection').style.display = 'block';
+            document.getElementById('downloadBtn').href = url;
+            document.getElementById('downloadBtn').download = `merged-${Date.now()}.pdf`;
+        }
+
+        function showLoader() {
+            document.getElementById('outputSection').innerHTML = '<p>Processing... Please wait</p>';
+            document.getElementById('outputSection').style.display = 'block';
+        }
+
+        function hideLoader() {
+            document.getElementById('outputSection').innerHTML = `
+                <h3>Merged PDF Ready</h3>
+                <a id="downloadBtn" class="download-btn">Download File</a>
+            `;
         }
 
         // Initialize AdMob
